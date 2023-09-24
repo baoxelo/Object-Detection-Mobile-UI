@@ -1,20 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+/** @format */
+import {
+  NavigationContainer,
+  DefaultTheme,
+  DarkTheme,
+} from '@react-navigation/native';
+import Tabbar from './src/components/Tabbar';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { ImageBackground } from 'react-native';
 
-export default function App() {
+function App() {
+  const MyTheme = {
+    ...DefaultTheme,
+    backgroundColor: '#000',
+  };
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#eee' }}>
+      <ImageBackground
+        source={require('./src/assets/90689.jpg')}
+        resizeMode="cover"
+        style={{ flex: 1 }}
+      >
+        <NavigationContainer theme={MyTheme} style={{ flex: 1 }}>
+          <Tabbar />
+        </NavigationContainer>
+      </ImageBackground>
+    </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
